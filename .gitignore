@@ -2,3 +2,5 @@
 composer.lock
 
 .idea
+
+/twitter/keys.json

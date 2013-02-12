@@ -1,6 +1,7 @@
 {
     "require": {
         "php": ">=5.3.0",
-        "pda/pheanstalk": "dev-master"
+        "pda/pheanstalk": "dev-master",
+        "kertz/twitteroauth": "dev-master"
     }
 }
