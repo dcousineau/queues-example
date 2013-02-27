@@ -14,11 +14,7 @@ $pheanstalk = new Pheanstalk_Pheanstalk('127.0.0.1');
 function image_entropy(Imagick $image) {
     $hist = $image->getimagehistogram();
 
-    $size = 0;
-    foreach ($hist as $p) {
-        /** @var $p ImagickPixel */
-        $size += $p->getcolorcount();
-    }
+    $size = array_sum(array_map(function($p) { return $p->getcolorcount(); }, $hist));
 
     $hist_filt = [];
     foreach ($hist as $p) {
@@ -41,6 +37,15 @@ function image_entropy(Imagick $image) {
 function square_image(Imagick $image) {
     $geo = $image->getimagegeometry();
 
+    if ($geo['height'] == $geo['width']) return $image;
+
+    $rotated = false;
+    if ($geo['height'] < $geo['width']) {
+        $image->rotateimage(new ImagickPixel('none'), 90);
+        $rotated = true;
+        $geo = $image->getimagegeometry();
+    }
+
     while ($geo['height'] > $geo['width']) {
         $slice_height = min($geo['height'] - $geo['width'], 10);
 
@@ -59,6 +64,10 @@ function square_image(Imagick $image) {
         }
 
         $geo = $image->getimagegeometry();
+    }
+
+    if ($rotated) {
+        $image->rotateimage(new ImagickPixel('none'), -90);
     }
 
     return $image;
