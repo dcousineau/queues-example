@@ -3,8 +3,9 @@
 composer.lock
 
 .idea
+.mongod
 
 /twitter/keys.json
 
-/katzen/photos/*
-/katzen/thumbs/*
+/photos/photos/*
+/photos/thumbs/*

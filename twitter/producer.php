@@ -6,8 +6,7 @@ echo "Producing Jobs...\n";
 $screen_names = array(
     'phpdeveloper',
     'lonestarphp',
-    'planetphp',
-    'phpc',
+    'sunshinephp',
 );
 
 foreach ($screen_names as $screen_name) {

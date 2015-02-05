@@ -3,7 +3,7 @@
 require_once '../vendor/autoload.php';
 
 //Connect to beanstalkd
-$pheanstalk = new Pheanstalk_Pheanstalk('127.0.0.1');
+$pheanstalk = new Pheanstalk\Pheanstalk('127.0.0.1');
 
 /**
  * @see http://www.reddit.com/r/pics/comments/daat6/whole_lotta_boobs_d_de_another_comic/c0yqg1s
